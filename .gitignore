@@ -1,0 +1,17 @@
+bin/*
+!bin/Debug
+bin/Debug/*
+!bin/Debug/netstandard2.1
+bin/Debug/netstandard2.1/*
+!bin/Debug/netstandard2.1/publish
+bin/Debug/netstandard2.1/publish/*
+!bin/Debug/netstandard2.1/publish/Citrine.dll
+obj
+
+Citrine/token
+token
+admin
+nicknames
+*.log
+config.json
+storage.json
