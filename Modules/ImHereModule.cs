@@ -4,14 +4,14 @@ using BotBone.Core;
 using BotBone.Core.Api;
 using BotBone.Core.Modules;
 
-namespace Citrine.Core.Modules
+namespace Kaho.Modules
 {
 	public class ImHereModule : ModuleBase
 	{
 		public static readonly string StatImHereCount = "stat.im-here-count";
 		public override async Task<bool> OnTimelineAsync(IPost n, IShell shell, Server core)
 		{
-			if (n.Text != null && n.Text.TrimMentions().ToHiragana().IsMatch(@"^しとりん(ちゃん|さん|様)?(何処|どこ|[居い](ますか|る[\?？]))"))
+			if (n.Text != null && n.Text.TrimMentions().ToHiragana().IsMatch(@"^かほ(ちゃん|さん|さま)?(どこ|[い](ますか|る[\?？]))"))
 			{
 				// 友好度が低ければやらない
 				if (core.GetRatingOf(n.User) < Rating.Like)
@@ -19,7 +19,7 @@ namespace Citrine.Core.Modules
 
 				// 遊び時間
 				await Task.Delay(3000 + rnd.Next(4000));
-				await shell.ReactAsync(n, "❤️");
+				await shell.ReactAsync(n, "🙌🏻");
 
 				await Task.Delay(250);
 				core.Storage[n.User].Add(StatImHereCount);
@@ -31,12 +31,12 @@ namespace Citrine.Core.Modules
 
 		private readonly string[] patterns =
 		{
-			"ここだよ〜.",
-			"ここにいるよ!",
-			"ここ!",
-			"どうしたの〜?",
-			"どうしたの〜{user}.",
-			"{user}〜! ここにいるよ!",
+			"ここだよ〜！",
+			"ここにいるよ〜",
+			"ここにいる！",
+			"どうしたの〜？",
+			"どうしたの〜{user}！",
+			"{user}〜！ここにいるよ!",
 			"いないよ〜(うそ)",
 		};
 	}

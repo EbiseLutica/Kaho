@@ -5,7 +5,7 @@ using BotBone.Core;
 using BotBone.Core.Api;
 using BotBone.Core.Modules;
 
-namespace Citrine.Core.Modules
+namespace Kaho.Modules
 {
 	public class SushiModule : ModuleBase
 	{
@@ -27,7 +27,7 @@ namespace Citrine.Core.Modules
                         var max = random.Next(1, 10);
                         for (var i = 0; i < max; i++)
                             res += s ?? candidates.Random();
-                        await shell.ReplyAsync(n, "ヘイお待ち! " + res);
+                        await shell.ReplyAsync(n, "ヘイお待ち！" + res);
                         core.Storage[n.User].Add(StatSushiCount);
                         EconomyModule.Pay(n, shell, core);
                         core.LikeWithLimited(n.User);
@@ -54,7 +54,7 @@ namespace Citrine.Core.Modules
 
 		private readonly string[] sushi =
 		{
-			"🍣", "🍣", "🍣", "🍣", "🍣", "🍣", "🍣", "🍣", "🍕", "🍔", "🍱", "🍘", "🍫", "📱", "💻",
+			"🍣", "🍣", "🍣", "🍣", "🍕", "🍔", "🍱", "🍘", "🍫", "🍮", "🍰", "🍞"
 		};
 
 		private readonly string[] dusts =
@@ -64,20 +64,20 @@ namespace Citrine.Core.Modules
 
         private readonly string[] messagesNigiri =
         {
-			"$user$の$thing$, 握ったよ",
-            "$user$の$thing$を握りました",
+			"$user$の$thing$を握った〜！",
+            "$user$の$thing$を握りました！",
             "$user$の$thing$は私の物です🥴",
         };
 
         private readonly string[] messagesReject =
         {
             "それはちょっと...",
-			"それはさすがに無理かな",
-			"ちょっとそれは厳しい",
-			"厳しい",
-			"無理です",
-			"握れません",
-			"$user$の$thing$は握るには難しい"
+			"それはさすがに無理ｗ",
+			"ちょっとそれは厳しくない？",
+			"無理ｗ",
+			"無理ですよ",
+			"それは握れないでしょ",
+			"$user$の$thing$は握れないかな〜..."
         };
 
     }

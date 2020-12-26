@@ -6,14 +6,14 @@
 //  Defines the TinySegmenter type.
 //
 //  C# translation by Ash Eldritch @ Beast KK
-//   
+//
 //  TinySegmenter 0.1 -- Super compact Japanese tokenizer in Javascript
 //  TinySegmenter is freely distributable under the terms of a new BSD licence.
 //  For details, see http://chasen.org/~taku/software/TinySegmenter/LICENCE.txt
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Citrine.Core.Modules.Markov
+namespace Kaho.Modules.Markov
 {
 	using System;
 	using System.Collections;

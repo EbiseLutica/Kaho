@@ -10,7 +10,7 @@ using BotBone.Core.Api;
 using BotBone.Core.Modules;
 using Newtonsoft.Json;
 
-namespace Citrine.Core.Modules
+namespace Kaho.Modules
 {
     /* === リプライ文字列の仕様 ===
 	 * $user$ は相手のユーザー名, もしくはニックネームに置き換わる
@@ -29,7 +29,7 @@ namespace Citrine.Core.Modules
 
         public HarassmentHandlerModule()
         {
-            using var reader = new StreamReader(GetType().Assembly.GetManifestResourceStream("Citrine.Resources.ngwords.txt"));
+            using var reader = new StreamReader(GetType().Assembly.GetManifestResourceStream("Kaho.Resources.ngwords.txt"));
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine().Trim().ToLowerInvariant().ToHiragana();
@@ -53,22 +53,7 @@ namespace Citrine.Core.Modules
 
             if (IsHarassmented(n.Text))
             {
-                // セクハラ
-                switch (core.GetRatingOf(n.User))
-                {
-                    case Rating.Hate:
-                        await shell.ReplyAsync(n, replyHate.Random());
-                        break;
-                    case Rating.Normal:
-                    case Rating.Like:
-                        await shell.ReplyAsync(n, reply.Random());
-                        break;
-                    case Rating.BestFriend:
-                    case Rating.Partner:
-                        await shell.ReplyAsync(n, replyLove.Random());
-                        return true;
-                }
-                core.OnHarassment(n.User, 1);
+				await shell.ReactAsync(n, "🥴");
                 return true;
             }
             return false;
@@ -99,31 +84,6 @@ namespace Citrine.Core.Modules
             }
             return res;
         }
-
-        private readonly string[] replyHate =
-        {
-            "はぁ...なんでそんなことしか言えないの?",
-            "ほんとキモい",
-            "最低",
-            "いい加減にして, そういう言葉嫌いだって言ってる",
-            "ふざけるな",
-        };
-
-        private readonly string[] reply =
-        {
-            "ねぇ, そういう言葉嫌ですよ",
-            "そういうのいやです",
-            "うーん, セクハラですか?",
-            "それセクハラですよ"
-        };
-
-        private readonly string[] replyLove =
-        {
-            "もー, すぐそういうこと言うんだから",
-            "下ネタ好きなんだね",
-            "^^;",
-            "そうだね^^"
-        };
 
         private readonly Logger logger = new Logger(nameof(HarassmentHandlerModule));
     }

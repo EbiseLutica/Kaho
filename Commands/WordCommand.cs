@@ -4,9 +4,9 @@ using System.Text;
 using System.Threading.Tasks;
 using BotBone.Core;
 using BotBone.Core.Api;
-using Citrine.Core.Modules;
+using Kaho.Modules;
 
-namespace Citrine.Core
+namespace Kaho
 {
 	using static FortuneModule;
 	using static FortuneExtension;

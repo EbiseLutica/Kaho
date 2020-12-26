@@ -4,7 +4,7 @@ using BotBone.Core;
 using BotBone.Core.Api;
 using BotBone.Core.Modules;
 
-namespace Citrine.Core
+namespace Kaho
 {
 	public class VersionCommand : CommandBase
 	{
@@ -18,7 +18,7 @@ namespace Citrine.Core
 
 		public override async Task<string> OnActivatedAsync(ICommandSender sender, Server core, IShell shell, string[] args, string body)
 		{
-			return $"BotBone v{Server.Version} Citrine v{Const.Version}";
+			return $"BotBone v{Server.Version} Kaho v{Const.Version}";
 		}
 	}
 }

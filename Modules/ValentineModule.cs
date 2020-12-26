@@ -6,7 +6,7 @@ using BotBone.Core;
 using BotBone.Core.Api;
 using BotBone.Core.Modules;
 
-namespace Citrine.Core.Modules
+namespace Kaho.Modules
 {
 	public class ValentineModule : ModuleBase
 	{
@@ -46,7 +46,7 @@ namespace Citrine.Core.Modules
 					if (storage.Get("lastValentineYear", 0) == t.Year)
 						continue;
 
-					var msg = $"{core.GetNicknameOf(user)}, ハッピーバレンタイン！💝受け取ってくれるよね？";
+					var msg = $"{core.GetNicknameOf(user)}、ハッピーバレンタイン！💝受け取ってくれるよね？";
 					await shell.SendDirectMessageAsync(user, msg);
 					storage.Add(StatValentineCount);
 					storage.Set("lastValentineYear", t.Year);
@@ -84,9 +84,9 @@ namespace Citrine.Core.Modules
 		private readonly string[] thanksMessage =
 		{
 			"ありがと〜!",
-			"ほんと!? 嬉しい, ありがとう",
-			"わぁ, ありがとう!",
-			"私に!? ありがとう!",
+			"わぁ、嘘！嬉しいよ、ありがとう！",
+			"わぁ、ありがとう!",
+			"私に！？ありがと〜！",
 		};
 	}
 }

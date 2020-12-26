@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Citrine.Core.Modules.Markov
+namespace Kaho.Modules.Markov
 {
 	public class MarkovNode
 	{

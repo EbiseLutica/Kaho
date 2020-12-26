@@ -3,7 +3,7 @@ using BotBone.Core;
 using BotBone.Core.Api;
 using BotBone.Core.Modules;
 
-namespace Citrine.Core.Modules
+namespace Kaho.Modules
 {
 	public class CommandModule : ModuleBase
 	{

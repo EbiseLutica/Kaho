@@ -4,7 +4,7 @@ using BotBone.Core;
 using BotBone.Core.Api;
 using BotBone.Core.Modules;
 
-namespace Citrine.Core
+namespace Kaho
 {
 	public class StopCommand : CommandBase
 	{
@@ -14,7 +14,7 @@ namespace Citrine.Core
 
 		public override PermissionFlag Permission => PermissionFlag.AdminOnly;
 
-		public override string Description => "シトリンを停止します。";
+		public override string Description => "カホを停止します。";
 
 		public override async Task<string> OnActivatedAsync(ICommandSender sender, Server core, IShell shell, string[] args, string body)
 		{

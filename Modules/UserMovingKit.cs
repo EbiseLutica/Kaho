@@ -6,7 +6,7 @@ using BotBone.Core;
 using BotBone.Core.Api;
 using BotBone.Core.Modules;
 
-namespace Citrine.Core.Modules
+namespace Kaho.Modules
 {
 	public class UserMovingKit : ModuleBase, ICommand
 	{
@@ -34,7 +34,7 @@ namespace Citrine.Core.Modules
 				if (movingCodesSet.FirstOrDefault(m => m.userId == n.User.Id) is (string userId, string movingCode) set)
 				{
 					// 既にコードがあればそれを返す
-					message = $"ん, あなたには既に引っ越し手続きコードを発行しているね. 引っ越ししたいアカウントで私に、リプライで次のようなコマンドを送ってね.\n/moving-code {set.movingCode}";
+					message = $"ん？既に引っ越し手続きコードを発行しているみたい。引っ越ししたいアカウントで私に、リプライで次のようなコマンドを送ってね.\n/moving-code {set.movingCode}";
 				}
 				else
 				{
@@ -47,19 +47,19 @@ namespace Citrine.Core.Modules
 						code = GenerateCode(10);
 					}
 					movingCodesSet.Add((n.User.Id, code));
-					message = $"はい, 引っ越し手続きコードを発行したよ. 引っ越ししたいアカウントで私に、リプライで次のようなコマンドを送ってね.\n/moving-code {code}";
+					message = $"はい、引っ越し手続きコードを発行したよ！引っ越ししたいアカウントで私に、リプライで次のようなコマンドを送ってね.\n/moving-code {code}";
 				}
 			}
 			else if (n.Text.IsMatch("(引っ?越|ひっこ)しキャンセル"))
 			{
 				if (!(movingCodesSet.FirstOrDefault(m => m.userId == n.User.Id) is (string userId, string movingCode) set))
 				{
-					message = "ん...? あなたは元々引っ越し手続きをしていないみたいだよ? 引っ越しをしたかったら, 引っ越ししたい って言ってね.";
+					message = "うーん、あなたは元々引っ越し手続きをしていないみたい。引っ越しをしたかったら, 引っ越ししたい って言ってね！";
 				}
 				else
 				{
 					movingCodesSet.RemoveAll(r => r.userId == n.User.Id);
-					message = "わかった. 引っ越し手続きはキャンセルしたよ. またしたくなったら声かけてね.";
+					message = "オッケー！引っ越し手続きはキャンセルしたよ。またしたくなったときに声かけてね！";
 				}
 			}
 			if (message != null)
@@ -81,16 +81,16 @@ namespace Citrine.Core.Modules
 			}
 			if (sender is not PostCommandSender s)
 			{
-				return "ユーザーから実行してください.";
+				return "ユーザーから実行してください。";
 			}
 
 			if (!(movingCodesSet.FirstOrDefault(m => m.movingCode == body.Trim()) is (string userId, string movingCode) set))
 			{
-				return "その引っ越し手続きコードは存在しないよ. コードが正しいかもう一度確認してね.";
+				return "その引っ越し手続きコードは存在しないよ。コードが正しいかもう一度確認してね。";
 			}
 
 			core.Storage.Migrate(set.userId, s.User.Id);
-			return "引っ越しが完了したよ〜. これからもよろしくね.";
+			return "引っ越しが完了したよ〜！これからもよろしく！";
 		}
 
 		private string GenerateCode(int length)

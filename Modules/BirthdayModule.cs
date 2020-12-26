@@ -8,7 +8,7 @@ using BotBone.Core;
 using BotBone.Core.Api;
 using BotBone.Core.Modules;
 
-namespace Citrine.Core.Modules
+namespace Kaho.Modules
 {
 	public class BirthdayModule : ModuleBase
 	{
@@ -57,7 +57,7 @@ namespace Citrine.Core.Modules
 				if (core.GetRatingOf(n.User) <= Rating.Hate)
 					return false;
 
-				var res = await shell.ReplyAsync(n, "いいよ！！誕生日の日付を教えてね。例: 1998年11月29日");
+				var res = await shell.ReplyAsync(n, "いいよ〜〜！誕生日の日付を教えてね。例: 1998年11月29日");
 				if (res != null)
 					core.RegisterContext(res, this, null);
 				return true;
@@ -82,7 +82,7 @@ namespace Citrine.Core.Modules
 
 			if (!m.Success)
 			{
-				await shell.ReplyAsync(n, "ごめん, 正しい日付じゃないよそれ...");
+				await shell.ReplyAsync(n, "んー、正しい日付じゃなくない？それ...");
 				return true;
 			}
 
@@ -118,7 +118,7 @@ namespace Citrine.Core.Modules
 				var user = await shell.GetUserAsync(id);
 				if (user == null) continue;
 
-				await shell.SendDirectMessageAsync(user, $"{core.GetNicknameOf(user)}、誕生日おめでとう！🎂");
+				await shell.SendDirectMessageAsync(user, $"ハッピーバースデイ！{core.GetNicknameOf(user)}、誕生日おめでとう！🎂🎂🎂");
 				storage.Set(keyLastCelebratedYear, DateTime.Today.Year);
 			}
 

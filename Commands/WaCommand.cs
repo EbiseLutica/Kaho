@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using BotBone.Core;
 using BotBone.Core.Api;
 
-namespace Citrine.Core
+namespace Kaho
 {
 	public class WaCommand : CommandBase
 	{

@@ -1,4 +1,4 @@
-namespace Citrine.Core.Modules
+namespace Kaho.Modules
 {
 	public partial class FortuneModule
 	{
@@ -358,6 +358,7 @@ namespace Citrine.Core.Modules
 			"電車",
 			"トイレ",
 			"シトリン",
+			"カホ",
 			"トポス",
 			"地下鉄",
 			"弦巻営業所",

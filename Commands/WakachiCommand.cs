@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using BotBone.Core;
 using BotBone.Core.Api;
-using Citrine.Core.Modules.Markov;
+using Kaho.Modules.Markov;
 
-namespace Citrine.Core
+namespace Kaho
 {
 	public class WakachiCommand : CommandBase
 	{

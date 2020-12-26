@@ -9,7 +9,7 @@ using BotBone.Core.Api;
 using BotBone.Core.Modules;
 using Newtonsoft.Json;
 
-namespace Citrine.Core.Modules
+namespace Kaho.Modules
 {
 	/* === リプライ文字列の仕様 ===
 	 * $user$ は相手のユーザー名, もしくはニックネームに置き換わる
@@ -26,7 +26,7 @@ namespace Citrine.Core.Modules
 
 		public GreetingModule()
 		{
-			using var reader = new StreamReader(GetType().Assembly.GetManifestResourceStream("Citrine.Resources.greeting.json"));
+			using var reader = new StreamReader(GetType().Assembly.GetManifestResourceStream("Kaho.Resources.greeting.json"));
 			patterns = JsonConvert.DeserializeObject<List<Pattern>>(reader.ReadToEnd());
 		}
 
@@ -40,7 +40,15 @@ namespace Citrine.Core.Modules
 			var pattern = patterns.FirstOrDefault(record => Regex.IsMatch(n.Text.Trim().Replace("にゃ", "な"), record.Regex));
 
 			if (pattern == null)
+			{
+				// 不一致の場合、確率でリアクションを送る
+				var react = fallbackReactions.Random();
+				if (react is not null)
+				{
+					await shell.ReactAsync(n, react);
+				}
 				return false;
+			}
 
 			await Task.Delay(2000 + random.Next(7000));
 
@@ -97,6 +105,16 @@ namespace Citrine.Core.Modules
 			[JsonProperty("replyLike")]
 			public string[] ReplyLike { get; set; } = new string[0];
 		}
+
+		private string?[] fallbackReactions = {
+			"👍",
+			"🥴",
+			"🍮",
+			"🤯",
+			"🍣",
+			"❤️",
+			null,
+		};
 	}
 
 	public static class PatternExtension

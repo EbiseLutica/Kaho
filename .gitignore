@@ -5,10 +5,10 @@ bin/Debug/*
 bin/Debug/netstandard2.1/*
 !bin/Debug/netstandard2.1/publish
 bin/Debug/netstandard2.1/publish/*
-!bin/Debug/netstandard2.1/publish/Citrine.dll
+!bin/Debug/netstandard2.1/publish/Kaho.dll
 obj
 
-Citrine/token
+Kaho/token
 token
 admin
 nicknames

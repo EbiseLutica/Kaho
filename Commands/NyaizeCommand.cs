@@ -7,7 +7,7 @@ using BotBone.Core.Api;
 using BotBone.Core.Modules;
 using Newtonsoft.Json.Linq;
 
-namespace Citrine.Core
+namespace Kaho
 {
 	public class NyaizeCommand : CommandBase
 	{

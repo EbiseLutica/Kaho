@@ -6,7 +6,7 @@ using BotBone.Core;
 using BotBone.Core.Api;
 using BotBone.Core.Modules;
 
-namespace Citrine.Core
+namespace Kaho
 {
 	public class DiceCommand : CommandBase
 	{

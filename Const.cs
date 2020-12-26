@@ -1,4 +1,4 @@
-namespace Citrine.Core
+namespace Kaho
 {
 	public static class Const
 	{

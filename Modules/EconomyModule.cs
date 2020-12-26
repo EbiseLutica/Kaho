@@ -7,7 +7,7 @@ using BotBone.Core;
 using BotBone.Core.Api;
 using BotBone.Core.Modules;
 
-namespace Citrine.Core.Modules
+namespace Kaho.Modules
 {
 	public class EconomyModule : ModuleBase
 	{
@@ -102,17 +102,17 @@ namespace Citrine.Core.Modules
 			var target = await shell.GetUserByNameAsync(targetMention);
 			if (target == null)
 			{
-				await shell.ReplyAsync(n, "ユーザーが見つからなかったため, 送金に失敗しました.");
+				await shell.ReplyAsync(n, "相手ユーザーが見つからなかったので、送金に失敗しました");
 				return;
 			}
 			var amount = int.Parse(value2);
 			if (!TryUseMoney(n.User, amount, core))
 			{
-				await shell.ReplyAsync(n, "所持金が送金分よりも少ないため, 送金に失敗しました. あなたの残高は, " + core.Storage[n.User].Get("economy.balance", 0) + "クォーツです.");
+				await shell.ReplyAsync(n, "所持金が送金分よりも少ないため、送金に失敗しました. あなたの残高は、" + core.Storage[n.User].Get("economy.balance", 0) + "クォーツです！");
 				return;
 			}
 			core.Storage[target].Add("economy.balance", amount);
-			await shell.ReplyAsync(n, "送金しました. あなたの残高は, " + core.Storage[n.User].Get("economy.balance", 0) + "クォーツです.");
+			await shell.ReplyAsync(n, "送金しました。あなたの残高は、" + core.Storage[n.User].Get("economy.balance", 0) + "クォーツです！");
 		}
 
 		private static readonly Random rnd = new Random();
