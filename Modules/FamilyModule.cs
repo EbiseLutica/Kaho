@@ -15,7 +15,7 @@ namespace Kaho.Modules
 			if (n.Text == null) return false;
 			if (string.IsNullOrEmpty(n.User.Host) && n.User.Name.ToLowerInvariant() == "citrine")
 			{
-				await shell.ReactAsync(n, "❤️");
+				await shell.ReactAsync(n, "❤");
 				return true;
 			}
 			return false;
